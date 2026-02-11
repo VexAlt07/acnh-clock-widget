@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horloge Animal Crossing Dark</title>
-    <!-- Importation d'une police arrondie proche de celle du jeu (Varela Round) -->
+    <!-- Police arrondie (Varela Round) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         body {
             /* Couleur de fond sombre pour Notion (Dark Mode) */
             background-color: #191919; 
-            color: #FAF9F3; /* Blanc cassé typique du jeu */
+            color: #FAF9F3; /* Blanc cassé */
             font-family: 'Varela Round', sans-serif;
             display: flex;
             justify-content: center;
@@ -25,7 +25,7 @@
 
         .clock-container {
             position: relative;
-            text-align: right; /* Tout est aligné vers la droite comme dans le jeu */
+            text-align: right;
             padding: 20px;
         }
 
@@ -56,7 +56,7 @@
         /* La date et le jour */
         .date-wrapper {
             display: flex;
-            justify-content: flex-end; /* Aligné à droite */
+            justify-content: flex-end;
             align-items: center;
             font-size: 32px;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
@@ -69,7 +69,8 @@
         /* La bulle du jour */
         .day-bubble {
             background-color: #FAF9F3;
-            color: #585858; /* Texte sombre dans la bulle */
+            /* C'est ici que j'ai changé la couleur pour correspondre au fond de la page */
+            color: #191919; 
             padding: 2px 12px;
             border-radius: 20px;
             font-size: 24px;
@@ -98,41 +99,36 @@
         function updateClock() {
             const now = new Date();
             
-            // Options de langue (Français par défaut, change 'fr-FR' en 'en-US' pour l'anglais)
+            // Langue française (mets 'en-US' si tu veux l'anglais)
             const lang = 'fr-FR'; 
 
             // 1. Récupérer l'heure
             let hours = now.getHours();
             let minutes = now.getMinutes();
             
-            // Format 12h pour le style Animal Crossing
             const ampm = hours >= 12 ? 'PM' : 'AM';
             hours = hours % 12;
-            hours = hours ? hours : 12; // Si 0, afficher 12
+            hours = hours ? hours : 12; 
             minutes = minutes < 10 ? '0' + minutes : minutes;
 
             // 2. Récupérer la date
-            // Mois (format court ex: Juin)
             const month = now.toLocaleDateString(lang, { month: 'long' });
             const dayNum = now.getDate();
-            // Jour de la semaine (format court ex: Ven.)
             let dayName = now.toLocaleDateString(lang, { weekday: 'short' });
             
-            // On s'assure qu'il y a un point à la fin du jour si besoin (style jeu)
             if (!dayName.includes('.')) dayName += '.';
 
-            // Mise à jour du DOM
+            // Mise à jour du HTML
             document.getElementById('time').textContent = `${hours}:${minutes}`;
             document.getElementById('ampm').textContent = ampm;
             
-            // Pour la date, on met la 1ère lettre du mois en majuscule
             const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
             document.getElementById('date-text').textContent = `${capitalizedMonth} ${dayNum}`;
             document.getElementById('day-bubble').textContent = dayName;
         }
 
         setInterval(updateClock, 1000);
-        updateClock(); // Appel immédiat
+        updateClock(); 
     </script>
 </body>
 </html>
