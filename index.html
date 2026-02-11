@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horloge Animal Crossing Dark Large Clean</title>
+    <title>Horloge Animal Crossing Style "mer."</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -38,7 +38,6 @@
             white-space: nowrap;
         }
 
-        /* AM/PM */
         .am-pm {
             font-size: 45px;
             margin-left: 10px;
@@ -60,7 +59,6 @@
             justify-content: flex-end;
             align-items: center;
             font-size: 42px;
-            /* Ombre pour le texte de la date (Juin 5), mais pas pour la bulle */
             text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
         }
 
@@ -76,10 +74,14 @@
             border-radius: 30px;
             font-size: 32px;
             font-weight: bold;
-            /* Ombre de la boîte (la bulle elle-même) conservée pour le relief */
+            
+            /* Ombre portée de la bulle (relief global) */
             box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            /* Suppression de l'ombre du TEXTE à l'intérieur de la bulle */
-            text-shadow: none; 
+            
+            /* ICI : L'ombre grise du texte comme sur ton image 'mer.' */
+            /* Couleur grise solide (#999) décalée de 2px */
+            text-shadow: 3px 3px 0px #999999; 
+            
             position: relative;
             top: -4px;
         }
