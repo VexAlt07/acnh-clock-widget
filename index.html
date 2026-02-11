@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horloge Animal Crossing Style "mer."</title>
+    <title>Horloge Animal Crossing Flat</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -33,7 +33,10 @@
             font-size: 110px;
             font-weight: bold;
             line-height: 1;
-            text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+            /* On garde une toute petite ombre discrète ici pour la lisibilité ou on enlève tout ? 
+               Dans le doute, je mets "none" pour du pur flat, 
+               mais tu peux remettre : 4px 4px 0px rgba(0,0,0,0.3) si tu trouves ça trop plat. */
+            text-shadow: none; 
             margin-bottom: 5px;
             white-space: nowrap;
         }
@@ -50,7 +53,7 @@
             background-color: #FAF9F3;
             border-radius: 3px;
             margin-bottom: 15px;
-            box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            box-shadow: none; /* Plus d'ombre ici non plus */
         }
 
         /* DATE */
@@ -59,14 +62,14 @@
             justify-content: flex-end;
             align-items: center;
             font-size: 42px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            text-shadow: none; /* Plus d'ombre */
         }
 
         .date-text {
             margin-right: 20px;
         }
 
-        /* BULLE JOUR */
+        /* BULLE JOUR (Modifiée pour être 100% Flat) */
         .day-bubble {
             background-color: #FAF9F3;
             color: #191919; 
@@ -75,12 +78,9 @@
             font-size: 32px;
             font-weight: bold;
             
-            /* Ombre portée de la bulle (relief global) */
-            box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            
-            /* ICI : L'ombre grise du texte comme sur ton image 'mer.' */
-            /* Couleur grise solide (#999) décalée de 2px */
-            text-shadow: 3px 3px 0px #999999; 
+            /* ZÉRO OMBRE : C'est ici que la magie opère */
+            box-shadow: none; 
+            text-shadow: none; 
             
             position: relative;
             top: -4px;
