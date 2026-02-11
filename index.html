@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Horloge Animal Crossing Dark Large</title>
+    <title>Horloge Animal Crossing Dark Large Clean</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -28,23 +28,23 @@
             padding: 20px;
         }
 
-        /* L'HEURE (Agrandie de 80px à 110px) */
+        /* L'HEURE */
         .time-wrapper {
             font-size: 110px;
             font-weight: bold;
             line-height: 1;
             text-shadow: 4px 4px 0px rgba(0,0,0,0.3);
             margin-bottom: 5px;
-            white-space: nowrap; /* Empêche le retour à la ligne */
+            white-space: nowrap;
         }
 
-        /* AM/PM (Agrandi de 35px à 45px) */
+        /* AM/PM */
         .am-pm {
             font-size: 45px;
             margin-left: 10px;
         }
 
-        /* SEPARATEUR (Plus épais : 6px au lieu de 4px) */
+        /* SEPARATEUR */
         .separator {
             width: 100%;
             height: 6px;
@@ -54,12 +54,13 @@
             box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
         }
 
-        /* DATE (Agrandie de 32px à 42px) */
+        /* DATE */
         .date-wrapper {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             font-size: 42px;
+            /* Ombre pour le texte de la date (Juin 5), mais pas pour la bulle */
             text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
         }
 
@@ -67,15 +68,18 @@
             margin-right: 20px;
         }
 
-        /* BULLE JOUR (Agrandie de 24px à 32px) */
+        /* BULLE JOUR */
         .day-bubble {
             background-color: #FAF9F3;
-            color: #191919; /* Couleur du fond pour l'effet découpé */
+            color: #191919; 
             padding: 4px 18px;
             border-radius: 30px;
             font-size: 32px;
             font-weight: bold;
+            /* Ombre de la boîte (la bulle elle-même) conservée pour le relief */
             box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            /* Suppression de l'ombre du TEXTE à l'intérieur de la bulle */
+            text-shadow: none; 
             position: relative;
             top: -4px;
         }
@@ -98,7 +102,7 @@
     <script>
         function updateClock() {
             const now = new Date();
-            const lang = 'fr-FR'; // Mets 'en-US' pour l'anglais
+            const lang = 'fr-FR'; 
 
             let hours = now.getHours();
             let minutes = now.getMinutes();
