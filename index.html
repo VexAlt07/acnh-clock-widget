@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horloge Animal Crossing Dark</title>
+    <!-- Importation d'une police arrondie proche de celle du jeu (Varela Round) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            /* Couleur de fond sombre pour Notion (Dark Mode) */
+            background-color: #191919; 
+            color: #FAF9F3; /* Blanc cassé typique du jeu */
+            font-family: 'Varela Round', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .clock-container {
+            position: relative;
+            text-align: right; /* Tout est aligné vers la droite comme dans le jeu */
+            padding: 20px;
+        }
+
+        /* L'heure */
+        .time-wrapper {
+            font-size: 80px;
+            font-weight: bold;
+            line-height: 1;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+            margin-bottom: 5px;
+        }
+
+        .am-pm {
+            font-size: 35px;
+            margin-left: 5px;
+        }
+
+        /* La barre de séparation */
+        .separator {
+            width: 100%;
+            height: 4px;
+            background-color: #FAF9F3;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            box-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+        }
+
+        /* La date et le jour */
+        .date-wrapper {
+            display: flex;
+            justify-content: flex-end; /* Aligné à droite */
+            align-items: center;
+            font-size: 32px;
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+        }
+
+        .date-text {
+            margin-right: 15px;
+        }
+
+        /* La bulle du jour */
+        .day-bubble {
+            background-color: #FAF9F3;
+            color: #585858; /* Texte sombre dans la bulle */
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            position: relative;
+            top: -2px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="clock-container">
+        <div class="time-wrapper">
+            <span id="time">00:00</span><span id="ampm" class="am-pm">AM</span>
+        </div>
+        <div class="separator"></div>
+        <div class="date-wrapper">
+            <span id="date-text" class="date-text">Jan 1</span>
+            <span id="day-bubble" class="day-bubble">Mon.</span>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            
+            // Options de langue (Français par défaut, change 'fr-FR' en 'en-US' pour l'anglais)
+            const lang = 'fr-FR'; 
+
+            // 1. Récupérer l'heure
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            
+            // Format 12h pour le style Animal Crossing
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // Si 0, afficher 12
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            // 2. Récupérer la date
+            // Mois (format court ex: Juin)
+            const month = now.toLocaleDateString(lang, { month: 'long' });
+            const dayNum = now.getDate();
+            // Jour de la semaine (format court ex: Ven.)
+            let dayName = now.toLocaleDateString(lang, { weekday: 'short' });
+            
+            // On s'assure qu'il y a un point à la fin du jour si besoin (style jeu)
+            if (!dayName.includes('.')) dayName += '.';
+
+            // Mise à jour du DOM
+            document.getElementById('time').textContent = `${hours}:${minutes}`;
+            document.getElementById('ampm').textContent = ampm;
+            
+            // Pour la date, on met la 1ère lettre du mois en majuscule
+            const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1);
+            document.getElementById('date-text').textContent = `${capitalizedMonth} ${dayNum}`;
+            document.getElementById('day-bubble').textContent = dayName;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // Appel immédiat
+    </script>
+</body>
+</html>
